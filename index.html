@@ -7,7 +7,6 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 <style>
-  /* ----------- CSS Styling ----------- */
   :root {
     --primary: #4a6fa5;
     --secondary: #166088;
@@ -20,7 +19,9 @@
     --evening: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --night: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
   }
-  *, *::before, *::after { box-sizing: border-box; }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
   body {
     font-family: "Poppins", sans-serif;
     line-height: 1.6;
@@ -35,7 +36,9 @@
     color: var(--secondary);
     margin-bottom: 0.6rem;
   }
-  button { cursor: pointer; }
+  button {
+    cursor: pointer;
+  }
   header {
     background: rgba(52, 58, 64, 0.9);
     color: #fff;
@@ -154,7 +157,6 @@
     animation: marquee 34s linear infinite;
   }
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-80%); } }
-
   .visual-countdown {
     display: flex;
     justify-content: center;
@@ -194,7 +196,6 @@
     margin-top: 0.25rem;
     user-select: none;
   }
-
   .stats-container {
     display: flex;
     flex-wrap: wrap;
@@ -236,7 +237,6 @@
     font-size: 1.1rem;
     margin: 1rem 0;
     user-select: none;
-    word-break: break-word;
   }
   .progress-container {
     background: #ececec;
@@ -252,8 +252,6 @@
     width: 0;
     transition: width 0.35s ease-out;
   }
-
-  /* Daily Tracker */
   #daily-tracker .time-tracker-grid {
     display: flex;
     flex-wrap: wrap;
@@ -293,8 +291,133 @@
     border-radius: 7px;
     width: 0;
   }
-
-  /* Daily Routine */
+  #life-goals .goals-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+  }
+  #life-goals .goal-item {
+    background: #f5fcff;
+    border: 1.5px solid #ececec;
+    border-radius: 7px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #life-goals .goal-item.completed {
+    background: #d4f5e2;
+    color: #2b7a4b;
+    text-decoration: line-through;
+  }
+  #life-goals .goal-info {
+    flex: 1 1 80%;
+  }
+  #life-goals .goal-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--primary);
+  }
+  #life-goals .goal-deadline {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  #life-goals .goal-days-left {
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 7px;
+    font-size: 0.9rem;
+  }
+  #life-goals .goal-days-left.overdue {
+    background: #ffeaea;
+    color: var(--danger);
+  }
+  #life-goals .goal-actions button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  #life-goals .goal-actions button:hover {
+    color: var(--danger);
+  }
+  #pomodoro .pomodoro-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  #pomodoro .pomodoro-timer {
+    font-size: 2.8rem;
+    font-weight: 700;
+    width: 130px;
+    text-align: center;
+    padding: 12px 0;
+    background: #fffbe5;
+    color: var(--danger);
+    border-radius: 10px;
+    box-shadow: 0 1px 8px #ecd79c40;
+    user-select: none;
+  }
+  #pomodoro .pomodoro-controls button {
+    font-size: 1rem;
+    margin-right: 0.8rem;
+  }
+  #pomodoro .work-mode {
+    background: var(--accent) !important;
+  }
+  #pomodoro .break-mode {
+    background: #e2c044 !important;
+    color: #444 !important;
+  }
+  #pomodoro .pomodoro-cycles {
+    font-size: 1.1rem;
+    color: var(--secondary);
+    user-select: none;
+  }
+  #money-management label {
+    font-weight: 600;
+    margin-right: 0.5rem;
+    user-select: none;
+  }
+  #money-management input[type=number], #money-management input[type=date] {
+    border: 1px solid #b1b1b1;
+    padding: 0.4rem 0.6rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    width: auto;
+  }
+  #money-management button {
+    margin-left: 0.6rem;
+  }
+  #money-management table {
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    margin-top: 0.8rem;
+  }
+  #money-management table th, #money-management table td {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #ddd;
+  }
+  #money-management table th {
+    background: #f8f9fa;
+    text-align: left;
+  }
+  #money-management table tfoot th {
+    background: #e2faee;
+  }
+  #money-management table tfoot th:last-child {
+    text-align: right;
+  }
+  #money-management #reset-money-month {
+    margin-top: 0.6rem;
+  }
+  /* Daily Routine Section Styles */
   #daily-routine {
     max-height: 480px;
     overflow-y: auto;
@@ -372,141 +495,6 @@
   table.daily-activities button.delete-btn:hover {
     background: #a72f33;
   }
-
-  /* Life Goals */
-  #life-goals .goals-list {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 1rem;
-  }
-  #life-goals .goal-item {
-    background: #f5fcff;
-    border: 1.5px solid #ececec;
-    border-radius: 7px;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-  }
-  #life-goals .goal-item.completed {
-    background: #d4f5e2;
-    color: #2b7a4b;
-    text-decoration: line-through;
-  }
-  #life-goals .goal-info {
-    flex: 1 1 60%;
-    min-width: 200px;
-  }
-  #life-goals .goal-title {
-    font-weight: 600;
-    font-size: 1.05rem;
-    color: var(--primary);
-  }
-  #life-goals .goal-deadline {
-    font-size: 0.9rem;
-    color: #666;
-  }
-  #life-goals .goal-countdown {
-    font-weight: 600;
-    color: var(--accent);
-    font-size: 0.9rem;
-    margin-top: 0.2rem;
-    user-select:none;
-  }
-  #life-goals .goal-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
-  }
-  #life-goals .goal-actions button {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    color: var(--primary);
-    cursor: pointer;
-    transition: color 0.2s;
-    padding: 0;
-    line-height: 1;
-    user-select:none;
-  }
-  #life-goals .goal-actions button:hover {
-    color: var(--danger);
-  }
-
-  /* Pomodoro */
-  #pomodoro .pomodoro-container {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-  #pomodoro .pomodoro-timer {
-    font-size: 2.8rem;
-    font-weight: 700;
-    width: 130px;
-    text-align: center;
-    padding: 12px 0;
-    background: #fffbe5;
-    color: var(--danger);
-    border-radius: 10px;
-    box-shadow: 0 1px 8px #ecd79c40;
-    user-select: none;
-  }
-  #pomodoro .pomodoro-controls button {
-    font-size: 1rem;
-    margin-right: 0.8rem;
-  }
-  #pomodoro .pomodoro-cycles {
-    font-size: 1.1rem;
-    color: var(--secondary);
-    user-select: none;
-  }
-
-  /* Money Management */
-  #money-management label {
-    font-weight: 600;
-    margin-right: 0.5rem;
-    user-select: none;
-  }
-  #money-management input[type=number], #money-management input[type=date] {
-    border: 1px solid #b1b1b1;
-    padding: 0.4rem 0.6rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    width: auto;
-  }
-  #money-management button {
-    margin-left: 0.6rem;
-  }
-  #money-management table {
-    width: 100%;
-    max-width: 600px;
-    border-collapse: collapse;
-    margin-top: 0.8rem;
-  }
-  #money-management table th, #money-management table td {
-    padding: 0.5rem 0.8rem;
-    border: 1px solid #ddd;
-  }
-  #money-management table th {
-    background: #f8f9fa;
-    text-align: left;
-  }
-  #money-management table tfoot th {
-    background: #e2faee;
-  }
-  #money-management table tfoot th:last-child {
-    text-align: right;
-  }
-  #money-management #reset-money-month {
-    margin-top: 0.6rem;
-  }
-
-  /* Responsive */
   @media (max-width: 770px) {
     .container {
       max-width: 95vw;
@@ -551,17 +539,27 @@
   <div class="heartbeat" aria-hidden="true">❤️</div>
   <h1>Life Tracker</h1>
   <p class="subtitle">Mindful Living Through Time Awareness</p>
-  <div id="current-time" class="time-showcase" aria-live="polite" aria-atomic="true">Current Time: Loading…</div>
+  <div id="current-time" class="time-showcase" aria-live="polite" aria-atomic="true">
+    Current Time: Loading…
+  </div>
 </header>
 
 <main class="container" role="main" aria-label="Life Tracker Application">
+
   <!-- User Input Section -->
   <section id="user-input-section" aria-label="User details input">
     <h2>Your Life Journey Begins Here</h2>
     <form id="life-form" novalidate>
       <div class="form-group">
         <label for="full-name">Full Name</label>
-        <input id="full-name" type="text" autocomplete="name" required placeholder="Enter your full name" aria-required="true" />
+        <input
+          id="full-name"
+          type="text"
+          autocomplete="name"
+          required
+          placeholder="Enter your full name"
+          aria-required="true"
+        />
       </div>
       <div class="form-group">
         <label for="dob">Date of Birth</label>
@@ -569,48 +567,55 @@
       </div>
       <div class="form-group">
         <label for="life-expectancy">Estimated Life Expectancy (years)</label>
-        <input id="life-expectancy" type="number" value="70" min="50" max="120" required aria-required="true" />
+        <input
+          id="life-expectancy"
+          type="number"
+          value="70"
+          min="50"
+          max="120"
+          required
+          aria-required="true"
+        />
       </div>
       <button type="submit" aria-label="Begin tracking my life">Begin Tracking My Life</button>
     </form>
   </section>
 
   <!-- Dashboard Section -->
-  <section id="dashboard" aria-label="Dashboard" hidden>
+  <section id="dashboard" style="display: none;" aria-label="Dashboard">
     <div class="quote-marquee" aria-live="polite">
       <div class="marquee-content" aria-hidden="true">
-         "The bad news is time flies. The good news is you're the pilot." – Michael Altshuler ||
-        “There are two blessings which many people lose: (They are) Health and Free Time." ||
-       "Don’t count every hour in the day, make every hour in the day count."||
-        "Each moment is a pearl – don’t drop it in the dust." 💎 ||
-        “Whoever does righteousness … We will surely cause him to live a good life.” — Quran 16:97 ||
-        " Take advantage of five before five..." – Youth, Health, Wealth, Free Time, Life" ||
-        "It’s not lack of time, it’s misuse of time." 🕒||
+        “Indeed, with hardship comes ease.” — Quran 94:6 •
+        "You're the pilot of your time plane" – fly wisely •
+        "Take advantage of five before five..." – Youth, Health, Wealth, Free Time, Life " --Hadith •
+        “Life is what happens when you're busy making other plans.” — John Lennon •
+        “Whoever does righteousness , We will surely cause him to live a good life.” — Quran 16:97 •
+        “The way to get started is to quit talking and begin doing.” — Walt Disney •
+        “And We will surely test you … but give good tidings to the patient.” — Quran 2:155
       </div>
     </div>
-
-    <nav class="nav-buttons" aria-label="Dashboard sections" role="tablist">
-      <button class="nav-button" role="tab" aria-selected="true" aria-controls="life-progress" id="tab-life-progress" data-section="life-progress" tabindex="0" type="button">Life Progress</button>
-      <button class="nav-button" role="tab" aria-selected="false" aria-controls="daily-tracker" id="tab-daily-tracker" data-section="daily-tracker" tabindex="-1" type="button">Daily Tracker</button>
-      <button class="nav-button" role="tab" aria-selected="false" aria-controls="daily-routine" id="tab-daily-routine" data-section="daily-routine" tabindex="-1" type="button">Daily Routine</button>
-      <button class="nav-button" role="tab" aria-selected="false" aria-controls="life-goals" id="tab-life-goals" data-section="life-goals" tabindex="-1" type="button">Life Goals</button>
-      <button class="nav-button" role="tab" aria-selected="false" aria-controls="pomodoro" id="tab-pomodoro" data-section="pomodoro" tabindex="-1" type="button">Pomodoro Timer</button>
-      <button class="nav-button" role="tab" aria-selected="false" aria-controls="money-management" id="tab-money-management" data-section="money-management" tabindex="-1" type="button">Money Management</button>
+    <nav class="nav-buttons" aria-label="Dashboard sections navigation" role="tablist">
+      <button class="nav-button" data-section="life-progress" aria-controls="life-progress" aria-selected="true" role="tab" tabindex="0" type="button">Life Progress</button>
+      <button class="nav-button" data-section="daily-tracker" aria-controls="daily-tracker" aria-selected="false" role="tab" tabindex="-1" type="button">Daily Tracker</button>
+      <button class="nav-button" data-section="daily-routine" aria-controls="daily-routine" aria-selected="false" role="tab" tabindex="-1" type="button">Daily Routine</button>
+      <button class="nav-button" data-section="life-goals" aria-controls="life-goals" aria-selected="false" role="tab" tabindex="-1" type="button">Life Goals</button>
+      <button class="nav-button" data-section="pomodoro" aria-controls="pomodoro" aria-selected="false" role="tab" tabindex="-1" type="button">Pomodoro Timer</button>
+      <button class="nav-button" data-section="money-management" aria-controls="money-management" aria-selected="false" role="tab" tabindex="-1" type="button">Money Management</button>
       <button id="reset-btn" type="button" aria-label="Reset all saved data">Reset All Data</button>
     </nav>
 
-    <!-- Life Progress -->
-    <section id="life-progress" tabindex="0" role="tabpanel" aria-labelledby="tab-life-progress" class="dashboard-section active" aria-live="polite" aria-atomic="true">
-      <!-- Life Progress Content as above -->
+    <!-- Life Progress Section -->
+    <section id="life-progress" class="dashboard-section active" role="tabpanel" tabindex="0" aria-live="polite">
       <h2>Your Life Progress</h2>
       <div class="visual-countdown" aria-hidden="true">
-        <div id="countdown-circle" class="countdown-circle" aria-label="Life completion circle progress" role="img">
+        <div id="countdown-circle" class="countdown-circle" aria-label="Life completion circle progress" role="img" aria-live="off">
           <div class="countdown-inner">
             <div id="countdown-percent" class="countdown-percent">0%</div>
             <div class="countdown-label">Life Completed</div>
           </div>
         </div>
       </div>
+
       <div class="stats-container">
         <div class="stat-card" aria-label="Time passed">
           <h3>Time Passed</h3>
@@ -637,14 +642,14 @@
           <p>of your estimated lifespan</p>
         </div>
       </div>
+
       <div id="live-countdown" class="highlight" aria-live="polite" aria-atomic="true">
         Calculating your life countdown…
       </div>
     </section>
 
-    <!-- Daily Tracker -->
-    <section id="daily-tracker" tabindex="-1" role="tabpanel" aria-labelledby="tab-daily-tracker" class="dashboard-section" hidden>
-      <!-- Daily Tracker Content with live countdown -->
+    <!-- Daily Tracker Section -->
+    <section id="daily-tracker" class="dashboard-section" role="tabpanel" tabindex="0" hidden>
       <h2>Daily Time Tracker</h2>
       <div class="time-tracker-grid">
         <div>
@@ -674,27 +679,34 @@
           </div>
         </div>
       </div>
+
       <div class="time-allocation" aria-live="polite" aria-atomic="true">
         <div class="time-category">
           <span class="time-color" style="background: var(--primary)"></span>
           <span class="time-label">Sleep Time</span>
-          <div class="time-bar" aria-hidden="true"><div id="sleep-fill" class="time-fill" style="background: var(--primary)"></div></div>
+          <div class="time-bar" aria-hidden="true">
+            <div id="sleep-fill" class="time-fill" style="background: var(--primary)"></div>
+          </div>
         </div>
         <div class="time-category">
           <span class="time-color" style="background: var(--accent)"></span>
           <span class="time-label">Productive Time</span>
-          <div class="time-bar" aria-hidden="true"><div id="productive-fill" class="time-fill" style="background: var(--accent)"></div></div>
+          <div class="time-bar" aria-hidden="true">
+            <div id="productive-fill" class="time-fill" style="background: var(--accent)"></div>
+          </div>
         </div>
         <div class="time-category">
           <span class="time-color" style="background: var(--danger)"></span>
           <span class="time-label">Time Passed</span>
-          <div class="time-bar" aria-hidden="true"><div id="passed-fill" class="time-fill" style="background: var(--danger)"></div></div>
+          <div class="time-bar" aria-hidden="true">
+            <div id="passed-fill" class="time-fill" style="background: var(--danger)"></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Daily Routine -->
-    <section id="daily-routine" tabindex="-1" role="tabpanel" aria-labelledby="tab-daily-routine" class="dashboard-section" hidden>
+    <!-- Daily Routine Section -->
+    <section id="daily-routine" class="dashboard-section" role="tabpanel" tabindex="0" hidden>
       <h2>Daily Routine</h2>
       <form id="daily-routine-form" aria-label="Add daily routine activity">
         <div>
@@ -721,49 +733,51 @@
           <button class="add-activity" type="submit" aria-label="Add activity to daily routine">Add Activity</button>
         </div>
       </form>
+
       <table class="daily-activities" aria-label="Daily routine activities list">
         <thead>
           <tr>
-            <th>Activity</th><th>Start</th><th>End</th><th>Duration (min)</th><th>Status</th><th>Actions</th>
+            <th>Activity</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Duration (min)</th>
+            <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
-        <tbody id="daily-activities-tbody"></tbody>
+        <tbody id="daily-activities-tbody">
+          <!-- Activities inserted here -->
+        </tbody>
       </table>
       <p class="highlight" id="daily-routine-info" aria-live="polite" aria-atomic="true"></p>
     </section>
 
-    <!-- Life Goals -->
-    <section id="life-goals" tabindex="-1" role="tabpanel" aria-labelledby="tab-life-goals" class="dashboard-section" hidden>
+    <!-- Life Goals Section -->
+    <section id="life-goals" class="dashboard-section" role="tabpanel" tabindex="0" hidden>
       <h2>Your Life Goals</h2>
-      <form id="goal-form" novalidate>
-        <div class="form-group">
-          <label for="goal-title">Goal Title</label>
-          <input id="goal-title" type="text" placeholder="What do you want to achieve?" required autocomplete="off"/>
-        </div>
-        <div class="form-group">
-          <label for="goal-deadline">Target Finish Date</label>
-          <input type="date" id="goal-deadline" required />
-        </div>
-        <div class="form-group">
-          <label for="goal-deadline-time">Target Finish Time</label>
-          <input type="time" id="goal-deadline-time" />
-        </div>
-        <button id="add-goal-btn" type="submit">Add Goal</button>
-      </form>
-      <ul id="goals-list" class="goals-list" aria-live="polite" aria-atomic="true"></ul>
+      <div class="form-group">
+        <label for="goal-title">Goal Title</label>
+        <input id="goal-title" type="text" placeholder="What do you want to achieve?" />
+      </div>
+      <div class="form-group">
+        <label for="goal-deadline">Target Finish Date</label>
+        <input type="date" id="goal-deadline" />
+      </div>
+      <button id="add-goal-btn">Add Goal</button>
+      <ul id="goals-list" class="goals-list"></ul>
     </section>
 
-    <!-- Pomodoro -->
-    <section id="pomodoro" tabindex="-1" role="tabpanel" aria-labelledby="tab-pomodoro" class="dashboard-section" hidden>
+    <!-- Pomodoro Timer Section -->
+    <section id="pomodoro" class="dashboard-section" role="tabpanel" tabindex="0" hidden>
       <h2>Pomodoro Productivity Timer</h2>
       <div class="pomodoro-container">
-        <div id="pomodoro-timer" class="pomodoro-timer" aria-live="polite" aria-atomic="true">25:00</div>
+        <div id="pomodoro-timer" class="pomodoro-timer">25:00</div>
         <div class="pomodoro-controls">
           <button id="start-pomodoro-btn">Start Work Session</button>
           <button id="start-break-btn">Start Break</button>
           <button id="reset-pomodoro-btn">Reset</button>
         </div>
-        <div id="pomodoro-cycles" class="pomodoro-cycles" aria-live="polite" aria-atomic="true">Completed Cycles: 0</div>
+        <div id="pomodoro-cycles" class="pomodoro-cycles">Completed Cycles: 0</div>
       </div>
       <div style="margin-top: 1.8rem;">
         <h3>How to Use the Pomodoro Technique</h3>
@@ -776,8 +790,8 @@
       </div>
     </section>
 
-    <!-- Money Management -->
-    <section id="money-management" tabindex="-1" role="tabpanel" aria-labelledby="tab-money-management" class="dashboard-section" hidden>
+    <!-- Money Management Section -->
+    <section id="money-management" class="dashboard-section" role="tabpanel" tabindex="0" hidden>
       <h2>Money Management</h2>
       <div style="margin-bottom:1.2rem;">
         <label for="money-start">Monthly Starting Balance:</label>
@@ -792,6 +806,7 @@
         <input type="number" id="money-spent" min="0" placeholder="Amount" style="width:90px;margin-right:0.8rem;">
         <button id="add-money-entry">Add</button>
       </div>
+
       <div>
         <h3 style="margin-top:1.1rem;">Your Money This Month</h3>
         <table style="width:100%;max-width:600px;margin-bottom:1.3rem; border-collapse: collapse;">
@@ -816,642 +831,645 @@
         <button id="reset-money-month" style="background:#d64045;">Reset Month</button>
       </div>
     </section>
+
   </section>
 </main>
 
-<footer style="position: fixed; left: 0; bottom: 0; width: 100%; text-align: center; background: #fff; padding: 8px 0; box-shadow: 0 -1px 8px rgba(0,0,0,0.03); font-size: 10px;">
-  <p>Life Tracker</p>
+<footer>
+  <p>Life Tracker – Mindful Living</p>
   <p>© 2025 All Rights Reserved</p>
-  <p>Planned by Alrafi Siddiquee Jim</p>
 </footer>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const LS_KEYS = {
-    user: "lt_user",
-    goals: "lt_goals",
-    day: "lt_day",
-    pomodoro: "lt_pomodoro",
-    money: "lt_money_management",
-    routine: "lt_daily_routine"
-  };
+  document.addEventListener("DOMContentLoaded", () => {
+    const LS_KEYS = {
+      user: "lt_user",
+      goals: "lt_goals",
+      day: "lt_day",
+      pomodoro: "lt_pomodoro",
+      money: "lt_money_management",
+      routine: "lt_daily_routine"
+    };
 
-  const save = (key, value) => localStorage.setItem(key, JSON.stringify(value));
-  const load = (key) => {
-    const v = localStorage.getItem(key);
-    return v ? JSON.parse(v) : null;
-  };
+    const save = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+    const load = (key) => {
+      const v = localStorage.getItem(key);
+      return v ? JSON.parse(v) : null;
+    };
 
-  // DOM refs
-  const form = document.getElementById("life-form");
-  const inputSection = document.getElementById("user-input-section");
-  const dashboard = document.getElementById("dashboard");
-  const navButtons = Array.from(document.querySelectorAll(".nav-button")).filter(btn => btn.id !== "reset-btn");
-  const dashboardSections = Array.from(document.querySelectorAll(".dashboard-section"));
-  const resetBtn = document.getElementById("reset-btn");
+    // DOM refs
+    const form = document.getElementById("life-form");
+    const inputSection = document.getElementById("user-input-section");
+    const dashboard = document.getElementById("dashboard");
+    const navButtons = Array.from(
+      document.querySelectorAll(".nav-button")
+    ).filter((btn) => btn.id !== "reset-btn");
+    const dashboardSections = Array.from(
+      document.querySelectorAll(".dashboard-section")
+    );
+    const resetBtn = document.getElementById("reset-btn");
 
-  // Update current time and background
-  function updateClock() {
-    const now = new Date();
-    let h = now.getHours();
-    const m = now.getMinutes().toString().padStart(2, "0");
-    const s = now.getSeconds().toString().padStart(2, "0");
-    const ampm = h >= 12 ? "PM" : "AM";
-    h = h % 12 || 12;
-    document.getElementById("current-time").textContent = `Current Time: ${h}:${m}:${s} ${ampm}`;
-  }
-  function updateBackground() {
-    const hour = new Date().getHours();
-    if (hour >= 5 && hour < 12) document.body.style.background = "var(--morning)";
-    else if (hour >= 12 && hour < 17) document.body.style.background = "var(--afternoon)";
-    else if (hour >= 17 && hour < 21) document.body.style.background = "var(--evening)";
-    else document.body.style.background = "var(--night)";
-  }
-  updateClock();
-  setInterval(updateClock, 1000);
-  updateBackground();
-  setInterval(updateBackground, 60000);
-
-  // Tab navigation with ARIA
-  function activateSection(sectionId, button) {
-    dashboardSections.forEach(section => {
-      if (section.id === sectionId) {
-        section.classList.add("active");
-        section.removeAttribute("hidden");
-        section.setAttribute("tabindex", "0");
-      } else {
-        section.classList.remove("active");
-        section.setAttribute("hidden", "");
-        section.setAttribute("tabindex", "-1");
-      }
-    });
-    navButtons.forEach(btn => {
-      if (btn === button) {
-        btn.setAttribute("aria-selected", "true");
-        btn.setAttribute("tabindex", "0");
-        btn.focus();
-      } else {
-        btn.setAttribute("aria-selected", "false");
-        btn.setAttribute("tabindex", "-1");
-      }
-    });
-    if (sectionId === "money-management") renderMoneyManagement();
-    if (sectionId === "daily-routine") renderDailyRoutineTable();
-    if (sectionId === "life-goals") renderGoals(loadGoals());
-  }
-  navButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      activateSection(btn.dataset.section, btn);
-    });
-  });
-
-  // Life progress calculation
-  let lifeInterval;
-  function startLifeStats(user) {
-    const dobDate = new Date(user.dob);
-    const lifeEndDate = new Date(dobDate);
-    lifeEndDate.setFullYear(dobDate.getFullYear() + user.lifeExp);
-    if (lifeInterval) clearInterval(lifeInterval);
-
-    lifeInterval = setInterval(() => {
+    // Clock & background
+    function updateClock() {
       const now = new Date();
-      const ageMs = now - dobDate;
-      const totalMs = lifeEndDate - dobDate;
-      const remainingMs = lifeEndDate - now;
-      const safeRemainingMs = Math.max(remainingMs, 0);
-
-      const msYear = 1000 * 60 * 60 * 24 * 365.25;
-      const msMonth = msYear / 12;
-      const msWeek = 1000 * 60 * 60 * 24 * 7;
-      const msDay = 1000 * 60 * 60 * 24;
-      const msSecond = 1000;
-
-      const yearsPassed = Math.floor(ageMs / msYear);
-      const monthsPassed = Math.floor(ageMs / msMonth);
-      const weeksPassed = Math.floor(ageMs / msWeek);
-      const daysPassed = Math.floor(ageMs / msDay);
-      const secondsPassed = Math.floor(ageMs / msSecond);
-
-      const yearsRemaining = Math.floor(safeRemainingMs / msYear);
-      const monthsRemaining = Math.floor((safeRemainingMs / msMonth) % 12);
-      const weeksRemaining = Math.floor((safeRemainingMs / msWeek) % 52);
-      const daysRemaining = Math.floor((safeRemainingMs / msDay) % 365);
-      const secondsRemaining = Math.floor((safeRemainingMs / msSecond) % 60);
-
-      let lifePct = Math.min(100, Math.max(0, (ageMs / totalMs) * 100));
-      lifePct = lifePct.toFixed(2);
-
-      document.getElementById("years-passed").textContent = yearsPassed;
-      document.getElementById("months-passed").textContent = monthsPassed;
-      document.getElementById("weeks-passed").textContent = weeksPassed;
-      document.getElementById("days-passed").textContent = daysPassed;
-      document.getElementById("seconds-passed").textContent = `${secondsPassed} seconds`;
-
-      document.getElementById("years-remaining").textContent = yearsRemaining;
-      document.getElementById("months-remaining").textContent = monthsRemaining;
-      document.getElementById("weeks-remaining").textContent = weeksRemaining;
-      document.getElementById("days-remaining").textContent = daysRemaining;
-      document.getElementById("seconds-remaining").textContent = `${secondsRemaining} seconds`;
-
-      document.getElementById("life-percentage").textContent = `${lifePct}%`;
-      document.getElementById("life-progress-bar").style.width = `${lifePct}%`;
-      document.getElementById("countdown-percent").textContent = `${lifePct}%`;
-      document.getElementById("countdown-circle").style.background = `conic-gradient(var(--accent) ${lifePct}%, var(--secondary) ${lifePct}%)`;
-
-      document.getElementById("live-countdown").innerHTML = `<strong>${yearsRemaining} years, ${monthsRemaining} months, ${weeksRemaining} weeks, ${daysRemaining} days, and ${secondsRemaining} seconds</strong> remaining. Make them count!`;
-    }, 1000);
-  }
-
-  // Daily Tracker with live countdown
-  let dayCountdownInterval = null;
-  function startDayLiveCountdown() {
-    if (dayCountdownInterval) clearInterval(dayCountdownInterval);
-    const sleepTime = document.getElementById('sleep-time').value;
-    if (!sleepTime) return;
-
-    function updateDayCountdown() {
-      const now = new Date();
-      const [sleepHour, sleepMin] = sleepTime.split(':').map(Number);
-      let sleepDate = new Date(now);
-      sleepDate.setHours(sleepHour, sleepMin, 0, 0);
-      if (sleepDate <= now) sleepDate.setDate(sleepDate.getDate() + 1);
-      let diff = sleepDate - now;
-      diff = Math.max(diff, 0);
-      const hours = Math.floor(diff / (1000 * 60 * 60));
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-      document.getElementById('day-countdown').textContent =
-        diff === 0 ? "Your planned day has ended!" : `You have ${hours} hours, ${minutes} minutes, and ${seconds} seconds left in your day. Use them wisely!`;
+      let h = now.getHours();
+      const m = now.getMinutes().toString().padStart(2, "0");
+      const s = now.getSeconds().toString().padStart(2, "0");
+      const ampm = h >= 12 ? "PM" : "AM";
+      h = h % 12 || 12;
+      document.getElementById(
+        "current-time"
+      ).textContent = `Current Time: ${h}:${m}:${s} ${ampm}`;
     }
-    updateDayCountdown();
-    dayCountdownInterval = setInterval(updateDayCountdown, 1000);
-  }
-  const calculateDayBtn = document.getElementById('calculate-day-btn');
-  if (calculateDayBtn) {
-    calculateDayBtn.addEventListener('click', () => {
-      const wakeUpTime = document.getElementById('wake-up-time').value;
-      const sleepTime = document.getElementById('sleep-time').value;
-      save(LS_KEYS.day, { wakeUp: wakeUpTime, sleep: sleepTime });
-
-      if (!wakeUpTime || !sleepTime) {
-        alert('Please enter both wake-up and sleep times');
-        return;
-      }
-
-      const now = new Date();
-      const [wakeHour, wakeMin] = wakeUpTime.split(':').map(Number);
-      const [sleepHour, sleepMin] = sleepTime.split(':').map(Number);
-      const wakeUpDate = new Date(now); wakeUpDate.setHours(wakeHour, wakeMin, 0, 0);
-      const sleepDate = new Date(now); sleepDate.setHours(sleepHour, sleepMin, 0, 0);
-      if (sleepDate <= wakeUpDate) sleepDate.setDate(sleepDate.getDate() + 1);
-
-      const sleepDurationMS = sleepDate - wakeUpDate;
-      const sleepDurationHours = +(sleepDurationMS / (1000 * 60 * 60)).toFixed(2);
-
-      let productiveMs = sleepDate - now;
-      if (productiveMs < 0) productiveMs += 86400000;
-      const productiveHours = +(productiveMs / (1000 * 60 * 60)).toFixed(2);
-
-      let passedMs = now - wakeUpDate;
-      if (passedMs < 0) passedMs += 86400000;
-      const passedHours = +(passedMs / (1000 * 60 * 60)).toFixed(2);
-
-      const totalHours = sleepDurationHours + productiveHours + passedHours;
-      const sleepPercent = (sleepDurationHours / totalHours) * 100;
-      const productivePercent = (productiveHours / totalHours) * 100;
-      const passedPercent = (passedHours / totalHours) * 100;
-
-      document.getElementById('sleep-duration').textContent = sleepDurationHours.toFixed(2);
-      document.getElementById('productive-hours').textContent = productiveHours.toFixed(2);
-
-      document.getElementById('sleep-fill').style.width = Math.min(sleepPercent,100) + '%';
-      document.getElementById('productive-fill').style.width = Math.min(productivePercent,100) + '%';
-      document.getElementById('passed-fill').style.width = Math.min(passedPercent,100) + '%';
-
-      startDayLiveCountdown();
-    });
-    const savedDay = load(LS_KEYS.day);
-    if (savedDay) {
-      document.getElementById('wake-up-time').value = savedDay.wakeUp || '';
-      document.getElementById('sleep-time').value = savedDay.sleep || '';
+    function updateBackground() {
+      const h = new Date().getHours();
+      if (h >= 5 && h < 12)
+        document.body.style.background = "var(--morning)";
+      else if (h >= 12 && h < 17)
+        document.body.style.background = "var(--afternoon)";
+      else if (h >= 17 && h < 21)
+        document.body.style.background = "var(--evening)";
+      else document.body.style.background = "var(--night)";
     }
-  }
+    updateClock();
+    setInterval(updateClock, 1000);
+    updateBackground();
+    setInterval(updateBackground, 60000);
 
-  // Daily Routine
-  const routineForm = document.getElementById('daily-routine-form');
-  const routineTableBody = document.getElementById('daily-activities-tbody');
-  const dailyRoutineInfo = document.getElementById('daily-routine-info');
-
-  function parseTimeToMinutes(timeStr) {
-    if (!timeStr) return null;
-    const parts = timeStr.split(':');
-    if (parts.length !== 2) return null;
-    const h = parseInt(parts[0], 10);
-    const m = parseInt(parts[1], 10);
-    if (isNaN(h) || isNaN(m)) return null;
-    return h * 60 + m;
-  }
-  function formatDurationMinutes(start, end) {
-    let startMin = parseTimeToMinutes(start);
-    let endMin = parseTimeToMinutes(end);
-    if (startMin === null || endMin === null) return 0;
-    if (endMin < startMin) endMin += 24 * 60;
-    return endMin - startMin;
-  }
-  function saveDailyRoutine(entries) { save(LS_KEYS.routine, entries); }
-  function loadDailyRoutine() { return load(LS_KEYS.routine) || []; }
-
-  function renderDailyRoutineTable() {
-    const routine = loadDailyRoutine();
-    routineTableBody.innerHTML = '';
-
-    if (routine.length === 0) {
-      routineTableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:#666;">No activities added yet.</td></tr>`;
-      dailyRoutineInfo.textContent = '';
-      return;
-    }
-
-    let totalMinutes = 0;
-    let total = routine.length;
-    let completed = 0;
-    routine.forEach((act, idx) => {
-      const duration = formatDurationMinutes(act.start, act.end);
-      totalMinutes += duration;
-      if (act.status === 'done') completed++;
-      const tr = document.createElement('tr');
-      tr.setAttribute('data-idx', idx);
-      tr.innerHTML = `
-        <td class="activity-name" title="${act.name}">${act.name}</td>
-        <td>${act.start}</td>
-        <td>${act.end}</td>
-        <td>${duration}</td>
-        <td>
-          <button class="status-btn ${act.status === 'done' ? 'done' : act.status === 'missed' ? 'missed' : ''}" aria-label="Change Status">${act.status === 'done' ? '✅' : act.status === 'missed' ? '❌' : '-'}</button>
-        </td>
-        <td>
-          <button class="delete-btn" aria-label="Delete Activity">✕</button>
-        </td>
-      `;
-      routineTableBody.appendChild(tr);
-    });
-
-    let percent = total ? ((completed / total) * 100).toFixed(1) : 0;
-    dailyRoutineInfo.textContent = `Total Planned Duration: ${totalMinutes} minutes (${(totalMinutes / 60).toFixed(2)} hours) | Daily Routine Completed: ${percent}%`;
-  }
-
-  routineForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const nameInput = document.getElementById('activity-name-input');
-    const startInput = document.getElementById('start-time-input');
-    const endInput = document.getElementById('end-time-input');
-    const statusInput = document.getElementById('status-input');
-
-    const name = nameInput.value.trim();
-    const start = startInput.value;
-    const end = endInput.value;
-    const status = statusInput.value;
-
-    if (!name) return alert('Please enter a valid activity name.');
-    if (!start) return alert('Please select a valid start time.');
-    if (!end) return alert('Please select a valid end time.');
-
-    const newActivity = { name, start, end, status };
-    const routine = loadDailyRoutine();
-    routine.push(newActivity);
-    saveDailyRoutine(routine);
-    renderDailyRoutineTable();
-
-    nameInput.value = '';
-    startInput.value = '';
-    endInput.value = '';
-    statusInput.value = 'pending';
-  });
-
-  routineTableBody.addEventListener('click', (e) => {
-    const btn = e.target;
-    const tr = btn.closest('tr');
-    if (!tr) return;
-    const idx = Number(tr.getAttribute('data-idx'));
-    if (isNaN(idx)) return;
-    const routine = loadDailyRoutine();
-
-    if (btn.classList.contains('status-btn')) {
-      const current = routine[idx].status;
-      const next = current === 'pending' ? 'done' : current === 'done' ? 'missed' : 'pending';
-      routine[idx].status = next;
-      saveDailyRoutine(routine);
-      renderDailyRoutineTable();
-    } else if (btn.classList.contains('delete-btn')) {
-      if (confirm(`Delete activity "${routine[idx].name}"?`)) {
-        routine.splice(idx, 1);
-        saveDailyRoutine(routine);
-        renderDailyRoutineTable();
-      }
-    }
-  });
-
-  // Life Goals with deadline + time and live countdown
-  const goalsList = document.getElementById('goals-list');
-  const goalForm = document.getElementById('goal-form');
-  function loadGoals() { return load(LS_KEYS.goals) || []; }
-  function saveGoals(goals) { save(LS_KEYS.goals, goals); }
-
-  const goalTimers = new Map();
-
-  function clearGoalTimers() {
-    for (const id of goalTimers.values()) clearInterval(id);
-    goalTimers.clear();
-  }
-
-  function renderGoals(goals) {
-    clearGoalTimers();
-    goalsList.innerHTML = '';
-    const now = new Date();
-
-    goals.forEach((goal, idx) => {
-      const li = document.createElement('li');
-      li.className = 'goal-item' + (goal.completed ? ' completed' : '');
-      let deadlineDate = null;
-      let deadlineText = 'Invalid Date';
-      let overdueClass = '';
-      let daysLeftText = '';
-
-      if (goal.deadline) {
-        deadlineDate = new Date(goal.deadline);
-        if (isNaN(deadlineDate)) {
-          deadlineText = 'Invalid Date';
+    // Navigation tab activation & ARIA update
+    function activateSection(sectionId, button) {
+      dashboardSections.forEach((sec) => {
+        if (sec.id === sectionId) {
+          sec.classList.add("active");
+          sec.removeAttribute("hidden");
+          sec.setAttribute("tabindex", "0");
         } else {
-          deadlineText = deadlineDate.toLocaleString();
-          const diffMs = deadlineDate - now;
-          const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-          if (diffMs < 0) {
-            overdueClass = 'overdue';
-            daysLeftText = `${Math.abs(diffDays)} days overdue`;
-          } else {
-            daysLeftText = `${diffDays} days left`;
-          }
+          sec.classList.remove("active");
+          sec.setAttribute("hidden", "");
+          sec.setAttribute("tabindex", "-1");
         }
-      }
-
-      li.innerHTML = `
-        <div class="goal-info">
-          <div class="goal-title">${goal.title}</div>
-          <div class="goal-deadline">Target: ${deadlineText}</div>
-          <div class="goal-countdown" id="goal-countdown-${idx}">Calculating...</div>
-        </div>
-        <div class="goal-days-left ${overdueClass}">${daysLeftText}</div>
-        <div class="goal-actions">
-          <button class="complete-btn" title="${goal.completed ? 'Undo Complete' : 'Mark Complete'}" aria-label="Toggle completion status">${goal.completed ? '🔄' : '✓'}</button>
-          <button class="delete-btn" title="Delete Goal" aria-label="Delete goal">✕</button>
-        </div>
-      `;
-      goalsList.appendChild(li);
-
-      // Live countdown for goal
-      if (deadlineDate && !isNaN(deadlineDate)) {
-        const countdownEl = li.querySelector(`#goal-countdown-${idx}`);
-        function updateCountdown() {
-          const now = new Date();
-          let diff = deadlineDate - now;
-          if (diff <= 0) {
-            countdownEl.textContent = 'Goal time reached!';
-            clearInterval(timerId);
-            return;
-          }
-          const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-          const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-          const m = Math.floor((diff / (1000 * 60)) % 60);
-          const s = Math.floor((diff / 1000) % 60);
-          countdownEl.textContent = `${d}d ${h}h ${m}m ${s}s left`;
-        }
-        updateCountdown();
-        const timerId = setInterval(updateCountdown, 1000);
-        goalTimers.set(idx, timerId);
-      }
-
-      // Events for buttons
-      li.querySelector('.complete-btn').addEventListener('click', () => {
-        goal.completed = !goal.completed;
-        saveGoals(goals);
-        renderGoals(goals);
       });
-      li.querySelector('.delete-btn').addEventListener('click', () => {
-        if (confirm(`Delete goal "${goal.title}"?`)) {
+      navButtons.forEach((btn) => {
+        if (btn === button) {
+          btn.setAttribute("aria-selected", "true");
+          btn.setAttribute("tabindex", "0");
+          btn.focus();
+        } else {
+          btn.setAttribute("aria-selected", "false");
+          btn.setAttribute("tabindex", "-1");
+        }
+      });
+      // Special: render money management & daily routine if these tabs selected
+      if (sectionId === 'money-management') renderMoneyManagement();
+      if (sectionId === 'daily-routine') renderDailyRoutineTable();
+    }
+    navButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        activateSection(btn.dataset.section, btn);
+      });
+    });
+
+    // LIFE PROGRESS
+    let lifeInterval = null;
+    function startLifeStats(user) {
+      const dobDate = new Date(user.dob);
+      const lifeEndDate = new Date(dobDate);
+      lifeEndDate.setFullYear(dobDate.getFullYear() + user.lifeExp);
+
+      if (lifeInterval) clearInterval(lifeInterval);
+
+      lifeInterval = setInterval(() => {
+        const now = new Date();
+        const ageMs = now - dobDate;
+        const remainingMs = lifeEndDate - now;
+        const totalMs = lifeEndDate - dobDate;
+
+        const safeRemainingMs = remainingMs > 0 ? remainingMs : 0;
+
+        const msYear = 1000 * 60 * 60 * 24 * 365.25;
+        const msMonth = msYear / 12;
+        const msWeek = 1000 * 60 * 60 * 24 * 7;
+        const msDay = 1000 * 60 * 60 * 24;
+        const msSecond = 1000;
+
+        const yearsPassed = Math.floor(ageMs / msYear);
+        const monthsPassed = Math.floor(ageMs / msMonth);
+        const weeksPassed = Math.floor(ageMs / msWeek);
+        const daysPassed = Math.floor(ageMs / msDay);
+        const secondsPassed = Math.floor(ageMs / msSecond);
+
+        const yearsRemaining = Math.floor(safeRemainingMs / msYear);
+        const monthsRemaining = Math.floor((safeRemainingMs / msMonth) % 12);
+        const weeksRemaining = Math.floor((safeRemainingMs / msWeek) % 52);
+        const daysRemaining = Math.floor((safeRemainingMs / msDay) % 365);
+        const secondsRemaining = Math.floor((safeRemainingMs / msSecond) % 60);
+
+        let lifePct = (ageMs / totalMs) * 100;
+        lifePct = Math.min(100, Math.max(0, lifePct));
+        lifePct = lifePct.toFixed(2);
+
+        document.getElementById("years-passed").textContent = yearsPassed;
+        document.getElementById("months-passed").textContent = monthsPassed;
+        document.getElementById("weeks-passed").textContent = weeksPassed;
+        document.getElementById("days-passed").textContent = daysPassed;
+        document.getElementById("seconds-passed").textContent = `${secondsPassed} seconds`;
+
+        document.getElementById("years-remaining").textContent = yearsRemaining;
+        document.getElementById("months-remaining").textContent = monthsRemaining;
+        document.getElementById("weeks-remaining").textContent = weeksRemaining;
+        document.getElementById("days-remaining").textContent = daysRemaining;
+        document.getElementById("seconds-remaining").textContent = `${secondsRemaining} seconds`;
+
+        document.getElementById("life-percentage").textContent = `${lifePct}%`;
+        document.getElementById("life-progress-bar").style.width = `${lifePct}%`;
+        document.getElementById("countdown-percent").textContent = `${lifePct}%`;
+
+        document.getElementById("countdown-circle").style.background =
+          `conic-gradient(var(--accent) ${lifePct}%, var(--secondary) ${lifePct}%)`;
+
+        document.getElementById("live-countdown").innerHTML =
+          `<strong>${yearsRemaining} years, ${monthsRemaining} months, ${weeksRemaining} weeks, ${daysRemaining} days, and ${secondsRemaining} seconds</strong> remaining. Make them count!`;
+      }, 1000);
+    }
+
+    // DAILY TRACKER
+    const calculateDayBtn = document.getElementById('calculate-day-btn');
+    if (calculateDayBtn) {
+      calculateDayBtn.addEventListener('click', () => {
+        const wakeUpTime = document.getElementById('wake-up-time').value;
+        const sleepTime = document.getElementById('sleep-time').value;
+        save(LS_KEYS.day, { wakeUp: wakeUpTime, sleep: sleepTime });
+
+        if (!wakeUpTime || !sleepTime) {
+          alert('Please enter both wake-up and sleep times');
+          return;
+        }
+
+        // Parse times
+        const now = new Date();
+        const [wakeHour, wakeMin] = wakeUpTime.split(':').map(Number);
+        const [sleepHour, sleepMin] = sleepTime.split(':').map(Number);
+
+        const wakeUpDate = new Date(now);
+        wakeUpDate.setHours(wakeHour, wakeMin, 0, 0);
+
+        const sleepDate = new Date(now);
+        sleepDate.setHours(sleepHour, sleepMin, 0, 0);
+        if (sleepDate <= wakeUpDate) sleepDate.setDate(sleepDate.getDate() + 1);
+
+        // Calculate sleep duration (hours)
+        const sleepDurationMS = sleepDate - wakeUpDate;
+        const sleepDurationHours = +(sleepDurationMS / (1000 * 60 * 60)).toFixed(2);
+
+        // Calculate productive time left (now till sleep time)
+        let productiveMs = sleepDate - now;
+        if (productiveMs < 0) productiveMs += 86400000;
+        const productiveHours = +(productiveMs / (1000 * 60 * 60)).toFixed(2);
+
+        // Calculate time passed (wake up time till now)
+        let passedMs = now - wakeUpDate;
+        if (passedMs < 0) passedMs += 86400000;
+        const passedHours = +(passedMs / (1000 * 60 * 60)).toFixed(2);
+
+        const totalHours = sleepDurationHours + productiveHours + passedHours;
+        const sleepPercent = (sleepDurationHours / totalHours) * 100;
+        const productivePercent = (productiveHours / totalHours) * 100;
+        const passedPercent = (passedHours / totalHours) * 100;
+
+        document.getElementById('sleep-duration').textContent = sleepDurationHours.toFixed(2);
+        document.getElementById('productive-hours').textContent = productiveHours.toFixed(2);
+
+        // Update fills
+        document.getElementById('sleep-fill').style.width =
+          (sleepPercent <= 100 ? sleepPercent : 100) + '%';
+        document.getElementById('productive-fill').style.width =
+          (productivePercent <= 100 ? productivePercent : 100) + '%';
+        document.getElementById('passed-fill').style.width =
+          (passedPercent <= 100 ? passedPercent : 100) + '%';
+
+        // Update countdown text with hours, minutes, seconds left
+        const hoursLeft = Math.floor(productiveMs / (1000 * 60 * 60));
+        const minutesLeft = Math.floor((productiveMs % (1000 * 60 * 60)) / (1000 * 60));
+        const secondsLeft = Math.floor((productiveMs % (1000 * 60)) / 1000);
+
+        document.getElementById('day-countdown').textContent =
+          `You have ${hoursLeft} hours, ${minutesLeft} minutes, and ${secondsLeft} seconds left in your day. Use them wisely!`;
+      });
+
+      // Load saved wake/sleep times
+      const savedDay = load(LS_KEYS.day);
+      if (savedDay) {
+        document.getElementById('wake-up-time').value = savedDay.wakeUp || '';
+        document.getElementById('sleep-time').value = savedDay.sleep || '';
+      }
+    }
+
+    // LIFE GOALS
+    const goalsList = document.getElementById('goals-list');
+    function loadGoals() {
+      return load(LS_KEYS.goals) || [];
+    }
+    function saveGoals(goals) {
+      save(LS_KEYS.goals, goals);
+    }
+    function renderGoals(goals) {
+      goalsList.innerHTML = '';
+      goals.forEach((goal, idx) => {
+        const deadlineDate = new Date(goal.deadline);
+        const today = new Date();
+        const diffDays = Math.ceil((deadlineDate - today) / (1000 * 60 * 60 * 24));
+        const li = document.createElement('li');
+        li.className = 'goal-item' + (goal.completed ? ' completed' : '');
+        li.innerHTML = `
+          <div class="goal-info">
+            <div class="goal-title">${goal.title}</div>
+            <div class="goal-deadline">Target: ${deadlineDate.toDateString()}</div>
+          </div>
+          <div class="goal-days-left ${diffDays < 0 ? 'overdue' : ''}">
+            ${diffDays < 0 ? Math.abs(diffDays) + ' days overdue' : diffDays + ' days left'}
+          </div>
+          <div class="goal-actions">
+            <button class="complete-btn" title="${goal.completed ? 'Undo Complete' : 'Mark Complete'}">${goal.completed ? '🔄' : '✓'}</button>
+            <button class="delete-btn" title="Delete Goal">✕</button>
+          </div>
+        `;
+        li.querySelector('.complete-btn').addEventListener('click', () => {
+          goal.completed = !goal.completed;
+          saveGoals(goals);
+          renderGoals(goals);
+        });
+        li.querySelector('.delete-btn').addEventListener('click', () => {
           goals.splice(idx, 1);
           saveGoals(goals);
           renderGoals(goals);
-        }
+        });
+        goalsList.appendChild(li);
       });
-    });
-  }
-
-  goalForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const titleInput = document.getElementById('goal-title');
-    const deadlineInput = document.getElementById('goal-deadline');
-    const deadlineTimeInput = document.getElementById('goal-deadline-time');
-
-    const title = titleInput.value.trim();
-    const deadlineDate = deadlineInput.value;
-    const deadlineTime = deadlineTimeInput.value || '23:59';
-
-    if (!title || !deadlineDate) {
-      alert('Please fill both goal title and deadline date.');
-      return;
     }
-    const deadline = deadlineDate + 'T' + deadlineTime;
-    const goals = loadGoals();
-    goals.push({ title, deadline, completed: false });
-    saveGoals(goals);
-    renderGoals(goals);
-
-    titleInput.value = '';
-    deadlineInput.value = '';
-    deadlineTimeInput.value = '';
-  });
-
-  // Pomodoro Timer
-  const pomodoroTimer = document.getElementById('pomodoro-timer');
-  const startWorkBtn = document.getElementById('start-pomodoro-btn');
-  const startBreakBtn = document.getElementById('start-break-btn');
-  const resetPomodoroBtn = document.getElementById('reset-pomodoro-btn');
-  const pomodoroCyclesNode = document.getElementById('pomodoro-cycles');
-  let pomodoroInterval = null;
-  let pomodoroTimeLeft = 25 * 60;
-  let pomodoroCycles = 0;
-  let isPomodoroBreak = false;
-
-  function updatePomodoroDisplay() {
-    const minutes = Math.floor(pomodoroTimeLeft / 60).toString().padStart(2, '0');
-    const seconds = (pomodoroTimeLeft % 60).toString().padStart(2, '0');
-    pomodoroTimer.textContent = `${minutes}:${seconds}`;
-    pomodoroCyclesNode.textContent = `Completed Cycles: ${pomodoroCycles}`;
-  }
-
-  function savePomodoro() { save(LS_KEYS.pomodoro, { cycles: pomodoroCycles }); }
-  function loadPomodoro() {
-    const data = load(LS_KEYS.pomodoro);
-    pomodoroCycles = (data && data.cycles) || 0;
-    updatePomodoroDisplay();
-  }
-
-  function startPomodoroTimer(duration, breakTime) {
-    clearInterval(pomodoroInterval);
-    pomodoroTimeLeft = duration;
-    isPomodoroBreak = breakTime;
-    updatePomodoroDisplay();
-    setStatusText(isPomodoroBreak ? "Break time! Relax a bit." : "Work session started! Focus.");
-
-    pomodoroInterval = setInterval(() => {
-      pomodoroTimeLeft--;
-      updatePomodoroDisplay();
-      if (pomodoroTimeLeft <= 0) {
-        clearInterval(pomodoroInterval);
-        if (!isPomodoroBreak) {
-          pomodoroCycles++;
-          savePomodoro();
-          updatePomodoroDisplay();
-          if (pomodoroCycles % 4 === 0) startPomodoroTimer(15 * 60, true); // long break after 4 cycles
-          else startPomodoroTimer(5 * 60, true); // short break
-        } else {
-          setStatusText("Break over! Ready for another work session?");
-        }
+    document.getElementById('add-goal-btn').addEventListener('click', () => {
+      const titleInput = document.getElementById('goal-title');
+      const deadlineInput = document.getElementById('goal-deadline');
+      const title = titleInput.value.trim();
+      const deadline = deadlineInput.value;
+      if (!title || !deadline) {
+        alert('Please fill in both goal title and deadline');
+        return;
       }
-    }, 1000);
-  }
-  function setStatusText(text) { document.getElementById('live-countdown').textContent = text; }
-  startWorkBtn.addEventListener('click', () => {
-    if (!pomodoroInterval || isPomodoroBreak) startPomodoroTimer(25 * 60, false);
-  });
-  startBreakBtn.addEventListener('click', () => {
-    if (!pomodoroInterval || !isPomodoroBreak) startPomodoroTimer(5 * 60, true);
-  });
-  resetPomodoroBtn.addEventListener('click', () => {
-    clearInterval(pomodoroInterval);
-    pomodoroTimeLeft = 25 * 60;
-    isPomodoroBreak = false;
-    updatePomodoroDisplay();
-    setStatusText("Pomodoro timer reset.");
-  });
-  loadPomodoro();
-
-  // Money Management
-  const moneyStartInput = document.getElementById('money-start');
-  const moneyDateInput = document.getElementById('money-date');
-  const moneySpentInput = document.getElementById('money-spent');
-  const moneyStartInfo = document.getElementById('money-start-info');
-  const moneyEntriesTbody = document.getElementById('money-entries');
-  const moneyTotalSpentElem = document.getElementById('money-total-spent');
-  const moneyTotalLeftElem = document.getElementById('money-total-left');
-  const resetMoneyBtn = document.getElementById('reset-money-month');
-  const MONEY_KEY = LS_KEYS.money;
-
-  function getMoneyData() {
-    const data = load(MONEY_KEY);
-    const now = new Date();
-    const ym = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
-    if (!data || data.month !== ym) return { month: ym, start: 0, entries: [] };
-    return data;
-  }
-  function saveMoneyData(data) { save(MONEY_KEY, data); }
-
-  function renderMoneyManagement() {
-    const data = getMoneyData();
-    const todayStr = new Date().toISOString().slice(0, 10);
-
-    moneyStartInput.value = data.start || '';
-    moneyDateInput.value = todayStr;
-    moneyStartInfo.textContent = data.start ? `Current Start: ${data.start}` : '';
-
-    moneyEntriesTbody.innerHTML = '';
-    let totalSpent = 0;
-    data.entries.forEach(entry => {
-      moneyEntriesTbody.insertAdjacentHTML('beforeend', `<tr><td>${entry.date}</td><td style="text-align: right;">${entry.spent}</td></tr>`);
-      totalSpent += Number(entry.spent || 0);
+      const goals = loadGoals();
+      goals.push({ title, deadline, completed: false });
+      saveGoals(goals);
+      renderGoals(goals);
+      titleInput.value = '';
+      deadlineInput.value = '';
     });
-    moneyTotalSpentElem.textContent = totalSpent.toFixed(2);
-    moneyTotalLeftElem.textContent = data.start ? (data.start - totalSpent).toFixed(2) : '--';
+    renderGoals(loadGoals());
 
-    resetMoneyBtn.disabled = !data.start && data.entries.length === 0;
-  }
+    // POMODORO
+    const pomodoroTimer = document.getElementById('pomodoro-timer');
+    const startWorkBtn = document.getElementById('start-pomodoro-btn');
+    const startBreakBtn = document.getElementById('start-break-btn');
+    const resetPomodoroBtn = document.getElementById('reset-pomodoro-btn');
+    const pomodoroCyclesNode = document.getElementById('pomodoro-cycles');
 
-  document.getElementById('set-money-start').addEventListener('click', () => {
-    let startVal = parseFloat(moneyStartInput.value || '0');
-    if (isNaN(startVal) || startVal <= 0) {
-      alert('Enter a positive number for the start balance.');
-      return;
+    let timerInterval = null;
+    let timeLeft = 25 * 60;
+    let isRunning = false;
+    let isBreak = false;
+    let cycles = 0;
+
+    function updatePomodoroDisplay() {
+      const minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+      const seconds = (timeLeft % 60).toString().padStart(2, '0');
+      pomodoroTimer.textContent = `${minutes}:${seconds}`;
+      pomodoroCyclesNode.textContent = `Completed Cycles: ${cycles}`;
     }
-    let data = getMoneyData();
-    data.start = startVal;
-    data.entries = [];
-    saveMoneyData(data);
-    renderMoneyManagement();
-  });
 
-  document.getElementById('add-money-entry').addEventListener('click', () => {
-    const date = moneyDateInput.value;
-    const spent = parseFloat(moneySpentInput.value || '0');
-    if (!date || isNaN(spent) || spent < 0) {
-      alert('Enter a valid date and amount spent.');
-      return;
+    function savePomodoro() {
+      save(LS_KEYS.pomodoro, { cycles });
     }
-    let data = getMoneyData();
-    let existing = data.entries.find(e => e.date === date);
-    if (existing) existing.spent += spent;
-    else data.entries.push({ date, spent });
-    data.entries.sort((a, b) => a.date.localeCompare(b.date));
-    saveMoneyData(data);
-    moneySpentInput.value = '';
-    renderMoneyManagement();
-  });
 
-  resetMoneyBtn.addEventListener('click', () => {
-    if (confirm("Reset this month's financial records? This cannot be undone.")) {
+    function loadPomodoro() {
+      const data = load(LS_KEYS.pomodoro);
+      cycles = (data && data.cycles) || 0;
+      updatePomodoroDisplay();
+    }
+
+    function startTimer(duration, breakSession) {
+      clearInterval(timerInterval);
+      timeLeft = duration;
+      isBreak = breakSession;
+      isRunning = true;
+      updatePomodoroDisplay();
+      setStatusText(isBreak ? "Break time! Relax a bit." : "Work session started! Focus.");
+
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        updatePomodoroDisplay();
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          isRunning = false;
+          if (!isBreak) {
+            cycles++;
+            savePomodoro();
+            updatePomodoroDisplay();
+            if (cycles % 4 === 0) {
+              startTimer(15 * 60, true);
+            } else {
+              startTimer(5 * 60, true);
+            }
+          } else {
+            setStatusText("Break over! Ready for another work session?");
+          }
+        }
+      }, 1000);
+    }
+
+    function setStatusText(text) {
+      document.getElementById('live-countdown').textContent = text;
+    }
+
+    startWorkBtn.addEventListener('click', () => {
+      if (!isRunning || isBreak) startTimer(25 * 60, false);
+    });
+
+    startBreakBtn.addEventListener('click', () => {
+      if (!isRunning || !isBreak) startTimer(5 * 60, true);
+    });
+
+    resetPomodoroBtn.addEventListener('click', () => {
+      clearInterval(timerInterval);
+      timeLeft = 25 * 60;
+      isRunning = false;
+      isBreak = false;
+      updatePomodoroDisplay();
+      setStatusText("Pomodoro timer reset.");
+    });
+
+    loadPomodoro();
+
+    // MONEY MANAGEMENT
+    const MONEY_KEY = LS_KEYS.money;
+    function getMoneyData() {
+      const d = load(MONEY_KEY);
       const now = new Date();
-      let ym = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
-      saveMoneyData({ month: ym, start: 0, entries: [] });
+      const ym = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+      if (!d || d.month !== ym) return { month: ym, start: 0, entries: [] };
+      return d;
+    }
+    function saveMoneyData(data) {
+      save(MONEY_KEY, data);
+    }
+    function renderMoneyManagement() {
+      const now = new Date();
+      const todayStr = now.toISOString().slice(0, 10);
+      const data = getMoneyData();
+
+      document.getElementById('money-start').value = data.start ? data.start : '';
+      document.getElementById('money-date').value = todayStr;
+      document.getElementById('money-start-info').textContent =
+        data.start ? `Current Start: ${data.start}` : '';
+
+      let tbody = '';
+      let totalSpent = 0;
+      data.entries.forEach(e => {
+        tbody += `<tr><td>${e.date}</td><td style="text-align:right;">${e.spent}</td></tr>`;
+        totalSpent += Number(e.spent || 0);
+      });
+      document.getElementById('money-entries').innerHTML = tbody;
+      document.getElementById('money-total-spent').textContent = totalSpent;
+      document.getElementById('money-total-left').textContent = data.start ? (data.start - totalSpent) : '';
+
+      document.getElementById('reset-money-month').disabled = !data.start && !data.entries.length;
+    }
+
+    document.getElementById('set-money-start').onclick = function() {
+      let val = parseFloat(document.getElementById('money-start').value || '0');
+      if (isNaN(val) || val <= 0) {
+        alert('Enter a positive number for the start balance.');
+        return;
+      }
+      let data = getMoneyData();
+      data.start = val;
+      data.entries = [];
+      saveMoneyData(data);
+      renderMoneyManagement();
+    };
+
+    document.getElementById('add-money-entry').onclick = function() {
+      let date = document.getElementById('money-date').value;
+      let s = parseFloat(document.getElementById('money-spent').value || '0');
+      if (!date || isNaN(s) || s < 0) {
+        alert('Enter a valid date and amount spent.');
+        return;
+      }
+      let data = getMoneyData();
+      let existing = data.entries.find(e => e.date === date);
+      if (existing) {
+        existing.spent += s;
+      } else {
+        data.entries.push({ date: date, spent: s });
+        data.entries.sort((a, b) => a.date.localeCompare(b.date));
+      }
+      saveMoneyData(data);
+      document.getElementById('money-spent').value = '';
+      renderMoneyManagement();
+    };
+
+    document.getElementById('reset-money-month').onclick = function() {
+      if (confirm("Reset this month's records? This cannot be undone.")) {
+        let now = new Date();
+        let ym = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+        saveMoneyData({ month: ym, start: 0, entries: [] });
+        renderMoneyManagement();
+      }
+    };
+
+    // Render money management when tab is shown
+    const moneyTabBtn = document.querySelector('.nav-button[data-section="money-management"]');
+    if (moneyTabBtn) {
+      moneyTabBtn.addEventListener('click', renderMoneyManagement);
+    }
+    if (document.getElementById("money-management").classList.contains("active")) {
       renderMoneyManagement();
     }
-  });
 
-  renderMoneyManagement();
+    // DAILY ROUTINE MANAGEMENT
+    const routineForm = document.getElementById('daily-routine-form');
+    const routineTableBody = document.getElementById('daily-activities-tbody');
+    const dailyRoutineInfo = document.getElementById('daily-routine-info');
 
-  // Reset All Data
-  resetBtn.addEventListener("click", () => {
-    if (confirm("Are you sure you want to reset all your data? This action cannot be undone.")) {
-      Object.values(LS_KEYS).forEach(key => localStorage.removeItem(key));
-      location.reload();
+    function parseTimeToMinutes(timeStr) {
+      if (!timeStr) return null;
+      const parts = timeStr.split(':');
+      if (parts.length !== 2) return null;
+      const h = parseInt(parts[0], 10);
+      const m = parseInt(parts[1], 10);
+      if (isNaN(h) || isNaN(m)) return null;
+      return h * 60 + m;
     }
-  });
-
-  // Initialize app
-  function initializeApp() {
-    const user = load(LS_KEYS.user);
-    if (user) {
-      inputSection.style.display = "none";
-      dashboard.removeAttribute('hidden');
-      startLifeStats(user);
-      activateSection("life-progress", navButtons[0]);
-    } else {
-      inputSection.style.display = "block";
-      dashboard.setAttribute('hidden', '');
+    function formatDurationMinutes(start, end) {
+      let startMin = parseTimeToMinutes(start);
+      let endMin = parseTimeToMinutes(end);
+      if (startMin === null || endMin === null) return 0;
+      if (endMin < startMin) {
+        endMin += 24 * 60;
+      }
+      return endMin - startMin;
     }
-  }
-  initializeApp();
 
-  // Form submission for user info handled at load
+    function saveDailyRoutine(entries) {
+      save(LS_KEYS.routine, entries);
+    }
 
-  // Render daily routine table at load tab
-  function renderInitialRoutines() {
-    if (document.getElementById('daily-routine').classList.contains('active')) {
+    function loadDailyRoutine() {
+      return load(LS_KEYS.routine) || [];
+    }
+
+    function renderDailyRoutineTable() {
+      const routine = loadDailyRoutine();
+      routineTableBody.innerHTML = '';
+
+      if (routine.length === 0) {
+        routineTableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:#666;">No activities added yet.</td></tr>`;
+        dailyRoutineInfo.textContent = '';
+        return;
+      }
+
+      let totalMinutes = 0;
+      let total = routine.length;
+      let completed = 0;
+      routine.forEach((act, idx) => {
+        const duration = formatDurationMinutes(act.start, act.end);
+        totalMinutes += duration;
+        if (act.status === 'done') completed++;
+        const tr = document.createElement('tr');
+        tr.setAttribute('data-idx', idx);
+        tr.innerHTML = `
+          <td class="activity-name" title="${act.name}">${act.name}</td>
+          <td>${act.start}</td>
+          <td>${act.end}</td>
+          <td>${duration}</td>
+          <td>
+            <button class="status-btn ${act.status === 'done' ? 'done' : act.status === 'missed' ? 'missed' : ''}" aria-label="Change Status">${act.status === 'done' ? '✅' : act.status === 'missed' ? '❌' : '-'}</button>
+          </td>
+          <td>
+            <button class="delete-btn" aria-label="Delete Activity">✕</button>
+          </td>
+        `;
+        routineTableBody.appendChild(tr);
+      });
+
+      let percent = total ? ((completed / total) * 100).toFixed(1) : 0;
+      dailyRoutineInfo.textContent = `Total Planned Duration: ${totalMinutes} minutes (${(totalMinutes/60).toFixed(2)} hours) | Daily Routine Completed: ${percent}%`;
+    }
+
+    routineForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameInput = document.getElementById('activity-name-input');
+      const startInput = document.getElementById('start-time-input');
+      const endInput = document.getElementById('end-time-input');
+      const statusInput = document.getElementById('status-input');
+
+      const name = nameInput.value.trim();
+      const start = startInput.value;
+      const end = endInput.value;
+      const status = statusInput.value;
+
+      if (!name) {
+        alert('Please enter a valid activity name.');
+        return;
+      }
+      if (!start) {
+        alert('Please select a valid start time.');
+        return;
+      }
+      if (!end) {
+        alert('Please select a valid end time.');
+        return;
+      }
+
+      const newActivity = { name, start, end, status };
+
+      const routine = loadDailyRoutine();
+      routine.push(newActivity);
+      saveDailyRoutine(routine);
       renderDailyRoutineTable();
+
+      nameInput.value = '';
+      startInput.value = '';
+      endInput.value = '';
+      statusInput.value = 'pending';
+    });
+
+    routineTableBody.addEventListener('click', (e) => {
+      const btn = e.target;
+      const tr = btn.closest('tr');
+      if (!tr) return;
+      const idx = Number(tr.getAttribute('data-idx'));
+      if (isNaN(idx)) return;
+      const routine = loadDailyRoutine();
+
+      if (btn.classList.contains('status-btn')) {
+        const currStatus = routine[idx].status;
+        const nextStatus = currStatus === 'pending' ? 'done' : currStatus === 'done' ? 'missed' : 'pending';
+        routine[idx].status = nextStatus;
+        saveDailyRoutine(routine);
+        renderDailyRoutineTable();
+      } else if (btn.classList.contains('delete-btn')) {
+        if (confirm(`Delete activity "${routine[idx].name}"?`)) {
+          routine.splice(idx, 1);
+          saveDailyRoutine(routine);
+          renderDailyRoutineTable();
+        }
+      }
+    });
+
+    // Reset All Data button
+    resetBtn.addEventListener("click", () => {
+      if (confirm("Are you sure you want to reset all your data? This action cannot be undone.")) {
+        localStorage.removeItem(LS_KEYS.user);
+        localStorage.removeItem(LS_KEYS.goals);
+        localStorage.removeItem(LS_KEYS.day);
+        localStorage.removeItem(LS_KEYS.pomodoro);
+        localStorage.removeItem(LS_KEYS.money);
+        localStorage.removeItem(LS_KEYS.routine);
+        location.reload();
+      }
+    });
+
+    // Initialize app
+    function initializeApp() {
+      const user = load(LS_KEYS.user);
+      if (user) {
+        inputSection.style.display = "none";
+        dashboard.style.display = "block";
+        startLifeStats(user);
+        activateSection("life-progress", navButtons[0]);
+      } else {
+        inputSection.style.display = "block";
+        dashboard.style.display = "none";
+      }
     }
-  }
+    initializeApp();
 
-  // Render goals initially
-  renderGoals(loadGoals());
+    // Form submit handler - User Info
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('full-name').value.trim();
+      const dob = document.getElementById('dob').value;
+      const lifeExp = parseInt(document.getElementById('life-expectancy').value, 10);
 
-});
+      if (!name || !dob || !lifeExp || lifeExp < 50 || lifeExp > 120) {
+        alert('Please fill all fields correctly.');
+        return;
+      }
+      save(LS_KEYS.user, { name, dob, lifeExp });
+      inputSection.style.display = "none";
+      dashboard.style.display = "block";
+      startLifeStats({ name, dob, lifeExp });
+      activateSection("life-progress", navButtons[0]);
+    });
+  });
 </script>
 </body>
 </html>
