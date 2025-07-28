@@ -442,21 +442,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ---- SLEEP TRACKER (12-hour parsing, robust) ----
+
 const sleepBtn = document.getElementById('calculate-sleep-btn');
 let sleepInterval = null;
 
 function parse12HourTimeToDate(timeStr) {
-  // Parse time strings like "07:30 AM", "11:00 PM"
   const match = timeStr.match(/^(\d{1,2}):(\d{2})\s*([AP]M)$/i);
   if (!match) return null;
   let hour = parseInt(match[1], 10);
   const min = parseInt(match[2], 10);
   const ampm = match[3].toUpperCase();
   if (hour < 1 || hour > 12 || min < 0 || min > 59) return null;
-
   if (ampm === "PM" && hour !== 12) hour += 12;
   if (ampm === "AM" && hour === 12) hour = 0;
-
   const now = new Date();
   return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, min, 0, 0);
 }
@@ -477,17 +475,17 @@ function updateSleepBars(sleepH, awakeH, passedH) {
   document.getElementById('passed-fill').style.width = (ppct <= 100 ? ppct : 100) + '%';
 }
 
-function updateSleepCountdown(wakeDate) {
+function updateSleepCountdown(nextSleepDate) {
   if (sleepInterval) clearInterval(sleepInterval);
   sleepInterval = setInterval(() => {
     const now = new Date();
-    let diff = wakeDate - now;
+    let diff = nextSleepDate - now;
     if (diff < 0) diff = 0;
     const h = Math.floor(diff / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
     const s = Math.floor((diff % 60000) / 1000);
     document.getElementById('sleep-countdown').textContent =
-      `Time until wake: ${h} hour(s), ${m} minute(s), ${s} second(s).`;
+      `Time until sleep: ${h} hour(s), ${m} minute(s), ${s} second(s).`;
   }, 1000);
 }
 
@@ -501,49 +499,49 @@ if (sleepBtn) {
       return;
     }
 
+    const sleepDate = parse12HourTimeToDate(sleepRaw);
     const wakeDate = parse12HourTimeToDate(wakeRaw);
-    let sleepDate = parse12HourTimeToDate(sleepRaw);
 
-    if (!wakeDate || !sleepDate) {
+    if (!sleepDate || !wakeDate) {
       alert('Enter times as hh:mm AM/PM. For example, 07:00 AM or 10:30 PM.');
       return;
     }
 
-    // Adjust dates if necessary to calculate 'sleep duration' properly:
-    // Treat sleepDate as start time and wakeDate as end time (typical logic).
-    // If wake time is earlier or equal to sleep time, shift wakeDate by 1 day.
-    if (wakeDate <= sleepDate) {
-      wakeDate.setDate(wakeDate.getDate() + 1);
-    }
-
-    // Calculate durations in milliseconds
-    const sleepDurationMS = wakeDate - sleepDate; // sleep to wake interval
-    const sleepH = +(sleepDurationMS / (1000 * 60 * 60)).toFixed(2);
-
     const now = new Date();
 
-    // Calculate awake time left (time from now till wake)
-    let awakeMs = wakeDate - now;
+    // Calculate sleep duration: from sleep time to next wake time
+    let adjustedWakeDate = new Date(wakeDate);
+    if (wakeDate <= sleepDate) adjustedWakeDate.setDate(adjustedWakeDate.getDate() + 1);
+    const sleepDurationMs = adjustedWakeDate - sleepDate;
+    const sleepH = +(sleepDurationMs / (1000 * 60 * 60)).toFixed(2);
+
+    // Calculate time left until next sleep time
+    let nextSleepDate = new Date(sleepDate);
+    if (nextSleepDate <= now) nextSleepDate.setDate(nextSleepDate.getDate() + 1);
+    let awakeMs = nextSleepDate - now;
     if (awakeMs < 0) awakeMs = 0;
     const awakeH = +(awakeMs / (1000 * 60 * 60)).toFixed(2);
 
-    // Calculate time passed since sleep time (time from sleep till now)
-    let passedMs = now - sleepDate;
+    // Time since last wake
+    let lastWakeDate = new Date(wakeDate);
+    if (lastWakeDate > now) lastWakeDate.setDate(lastWakeDate.getDate() - 1);
+    let passedMs = now - lastWakeDate;
     if (passedMs < 0) passedMs = 0;
     const passedH = +(passedMs / (1000 * 60 * 60)).toFixed(2);
 
     document.getElementById('sleep-duration').textContent = sleepH.toFixed(2);
     document.getElementById('awake-hours').textContent = awakeH.toFixed(2);
-    updateSleepBars(sleepH, awakeH, passedH);
-    updateSleepCountdown(wakeDate);
 
-    // Save data if you use the save() and LS_KEYS.sleep from your codebase
+    updateSleepBars(sleepH, awakeH, passedH);
+    updateSleepCountdown(nextSleepDate);
+
+    // Save data if save() and LS_KEYS.sleep are defined
     if (typeof save === "function" && typeof LS_KEYS !== "undefined") {
       save(LS_KEYS.sleep, { wakeUp: wakeRaw, sleep: sleepRaw });
     }
   });
 
-  // Load and auto-calc on page load if data exists
+  // Auto-load and calculate if there is saved data
   if (typeof load === "function" && typeof LS_KEYS !== "undefined") {
     const saved = load(LS_KEYS.sleep);
     if (saved && saved.wakeUp && saved.sleep) {
@@ -553,7 +551,6 @@ if (sleepBtn) {
     }
   }
 }
-
 
   // ---- ROUTINE TABLE MANAGEMENT ----
   const routineForm = document.getElementById('daily-routine-form');
